@@ -1,274 +1,250 @@
-# Product Requirements Document (PRD)
-## Visual Scoring & Report Generation Dashboard
+# Visual Scoring & Report Generation Dashboard
 
-### 1. Project Overview
-**Project Name:** Visual Scoring & Report Generation Dashboard  
-**Timeline:** 14-16 weeks  
-**Budget Range:** $55,300-75,280  
-**Platform:** Web Application (FastAPI + React)  
+A secure, self-serve dashboard for uploading visuals, scoring them, and generating detailed reports with insights and recommendations. Built with FastAPI and React, this enterprise-grade solution provides powerful scoring capabilities with automated report generation.
 
-### 2. Project Objectives
-- Create a secure platform for visual scoring and report generation
-- Enable self-service report generation
-- Provide enterprise-grade security
-- Ensure scalability for both small businesses and corporate users
+## 🌟 Features
 
-### 3. Detailed Requirements
+- 🔐 **Secure Authentication & Role-based Access**
+  - JWT-based authentication
+  - Role-based permissions (Admin/User)
+  - Multi-factor authentication support
+  - Session management
 
-#### 3.1 User Authentication & Authorization
-- Secure user registration and login
-- Role-based access control (Admin/User)
-- Password recovery system
-- Session management
-- Multi-factor authentication (optional)
+- 📊 **Visual Scoring System**
+  - 10 customizable scoring criteria
+  - 1-10 scale scoring
+  - Real-time validation
+  - Comparative analysis
+  - Historical tracking
 
-#### 3.2 Visual Upload System
-- Support for multiple image formats
-- File size limitations (up to 10MB per file)
-- Bulk upload capability
-- Preview functionality
-- Image optimization
+- 📑 **Dynamic Report Generation**
+  - PDF report generation
+  - Customizable templates
+  - Automated insights
+  - Performance trends
+  - Export functionality
 
-#### 3.3 Scoring System
-- 10 predefined criteria
-- 1-10 scale for each criterion
-- Real-time score validation
-- Score history tracking
-- Comparative analysis
+- 👑 **Admin Dashboard**
+  - User management
+  - System monitoring
+  - Analytics dashboard
+  - Content management
+  - Audit logs
 
-#### 3.4 Report Generation
-- Dynamic PDF generation
-- Customizable templates
-- Automated insights
-- Performance trends
-- Export functionality
-- Recommendation engine
+- ☁️ **AWS Integration**
+  - S3 for file storage
+  - RDS for database
+  - Cognito for authentication
+  - CloudFront for content delivery
+  - Lambda for serverless functions
 
-#### 3.5 Admin Dashboard
-- User management
-- System monitoring
-- Analytics dashboard
-- Content management
-- Audit logs
+- 🛡️ **Enterprise-grade Security**
+  - End-to-end encryption
+  - GDPR compliance
+  - Regular security audits
+  - Data backup
+  - Access logging
 
-#### 3.6 Security Features
-- End-to-end encryption
-- Data backup
-- Access logging
-- GDPR compliance
-- Regular security audits
+- 💳 **Payment & Subscription System**
+  - Secure payment processing (Stripe)
+  - Multiple subscription tiers
+  - Usage-based billing
+  - Payment history
+  - Invoice generation
+  - Automatic renewals
 
-#### 3.7 Payment System
-##### Subscription Tiers:
-- **Basic Tier ($29/month)**
-  - Up to 50 visuals/month
-  - Basic reporting
-  - Email support
-- **Professional Tier ($99/month)**
-  - Up to 200 visuals/month
-  - Advanced reporting
-  - Priority support
-- **Enterprise Tier ($299/month)**
-  - Unlimited visuals
-  - Custom reporting
-  - Dedicated support
-  - API access
+## 🏗️ Project Structure
 
-##### Payment Features:
-- Secure payment processing
-- Automatic billing
-- Invoice generation
-- Payment history
-- Subscription management
-- Usage tracking
-- Refund handling
+```plaintext
+project/
+├── backend/
+│   ├── app/
+│   │   ├── auth/                 # Authentication & authorization
+│   │   ├── scoring/              # Scoring logic
+│   │   ├── reports/              # Report generation
+│   │   ├── admin/               # Admin functionalities
+│   │   └── core/                # Core utilities
+│   ├── main.py                  # FastAPI application
+│   ├── requirements.txt         # Python dependencies
+│   └── alembic/                 # Database migrations
+├── frontend/
+│   ├── src/
+│   │   ├── components/          # Reusable components
+│   │   ├── pages/              # Page components
+│   │   ├── services/           # API services
+│   │   ├── theme.ts            # MUI theme
+│   │   └── App.tsx             # Main application
+│   └── package.json            # Node dependencies
+└── docker/                     # Docker configuration
+```
 
-#### 3.8 Page & Feature Breakdown
-##### Public Pages:
-- Landing Page (Marketing)
-- Pricing Page
-- Features Overview
-- Contact/Support Page
+## 🚀 Getting Started
 
-##### Authentication Pages:
-- Login Page
-- Registration Page
-- Password Reset Page
-- Email Verification Page
+### Prerequisites
 
-##### Main Application Pages:
-- Dashboard/Home
-- Upload Visual Page
-- Scoring Interface
-- Reports List/Overview
-- Report Detail View
-- Report Generation Page
-- User Profile/Settings
+- Python 3.9+
+- Node.js 16+
+- PostgreSQL
+- AWS Account
+- Docker & Docker Compose (optional)
 
-##### Subscription/Payment Pages:
-- Subscription Plans Page
-- Payment/Checkout Page
-- Billing History Page
-- Invoice View Page
-- Subscription Management Page
+### Environment Setup
 
-##### Admin Section Pages:
-- Admin Dashboard
-- User Management
-- System Monitoring
-- Analytics Dashboard
-- Content Management
-- Audit Logs
-- Payment/Subscription Overview
-- Revenue Analytics
+1. **Clone the Repository**
+```bash
+git clone https://github.com/yourusername/visual-scoring-dashboard.git
+cd visual-scoring-dashboard
+```
 
-**Total Pages:** 23
+2. **Backend Setup**
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+```
 
-### 4. Technical Specifications
+3. **Frontend Setup**
+```bash
+cd frontend
+npm install
+```
 
-#### Backend:
-- FastAPI framework
-- PostgreSQL database
-- AWS services integration
-- RESTful API architecture
-- Async processing
+4. **Environment Variables**
 
-#### Frontend:
-- React with TypeScript
-- Material-UI components
-- Responsive design
-- Progressive Web App
-- Modern UI/UX
+Create `.env` files in both backend and frontend directories:
 
-#### Infrastructure:
-- AWS hosting
-- Container deployment
-- CI/CD pipeline
-- Monitoring tools
-- Backup system
+```bash
+# Backend (.env)
+DATABASE_URL=postgresql://user:password@localhost:5432/db
+AWS_ACCESS_KEY=your_access_key
+AWS_SECRET_KEY=your_secret_key
+JWT_SECRET=your_jwt_secret
 
-#### Payment Integration:
-- Stripe API integration
-- Webhook handling
-- Secure payment processing
-- Subscription management
-- Invoice generation
-- Payment analytics
+# Frontend (.env)
+VITE_API_URL=http://localhost:8000
+```
 
-### 5. Project Timeline
+### Running the Application
 
-#### Phase 1: Core Setup & Basic Features (Weeks 1-4)
-- Project setup
-- Authentication system
-- Basic UI implementation
-- Database setup
-- Core infrastructure
+1. **Start Backend**
+```bash
+cd backend
+uvicorn main:app --reload
+```
 
-#### Phase 2: Main Features (Weeks 5-8)
-- Scoring system
-- File upload
-- Basic report generation
-- Admin panel
-- User management
+2. **Start Frontend**
+```bash
+cd frontend
+npm run dev
+```
 
-#### Phase 3: Payment & Advanced Features (Weeks 9-12)
-- Payment integration
-- Subscription system
-- Advanced reporting
-- Analytics
+3. **Access the Application**
+- Frontend: http://localhost:3000
+- API Documentation: http://localhost:8000/docs
 
-#### Phase 4: Polish & Launch (Weeks 13-16)
-- Testing
+## 📝 API Documentation
+
+### Authentication Endpoints
+- POST `/api/auth/register` - User registration
+- POST `/api/auth/login` - User login
+- POST `/api/auth/refresh` - Refresh token
+
+### Scoring Endpoints
+- POST `/api/scoring/upload` - Upload visual
+- POST `/api/scoring/score` - Submit scores
+- GET `/api/scoring/history` - Get scoring history
+
+### Report Endpoints
+- POST `/api/reports/generate` - Generate report
+- GET `/api/reports/list` - List reports
+- GET `/api/reports/{id}` - Get specific report
+
+### Admin Endpoints
+- GET `/api/admin/users` - List users
+- GET `/api/admin/stats` - System statistics
+- GET `/api/admin/logs` - System logs
+
+### Payment Endpoints
+- POST `/api/payments/create-subscription` - Create new subscription
+- POST `/api/payments/cancel-subscription` - Cancel subscription
+- GET `/api/payments/history` - Get payment history
+- GET `/api/payments/invoices` - Get invoices
+- POST `/api/payments/webhook` - Stripe webhook handler
+
+## 🔒 Security Features
+
+- JWT Authentication
+- Role-based Access Control
+- AWS S3 Secure File Storage
+- Data Encryption
+- HTTPS/SSL
+- Input Validation
+- Rate Limiting
+
+## 🚀 Deployment
+
+### Docker Deployment
+```bash
+docker-compose up -d
+```
+
+### Manual Deployment
+1. Build frontend
+```bash
+cd frontend
+npm run build
+```
+
+2. Start backend server
+```bash
+cd backend
+gunicorn main:app
+```
+
+## 📈 Monitoring & Maintenance
+
+- AWS CloudWatch for monitoring
+- Regular security updates
+- Database backups
 - Performance optimization
-- Documentation
-- Deployment
-- User training
+- User support
 
-### 6. Budget Breakdown
+## 🤝 Contributing
 
-#### 1. Frontend Development: $19,500-26,600
-- 23 pages × $500-700 per page = $11,500-16,100
-- Complex components (15) × $400-500 = $6,000-7,500
-- Responsive design & animations = $2,000-3,000
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-#### 2. Backend Development: $15,000-20,000
-- API development = $8,000-10,000
-- Database design = $2,000-3,000
-- Payment integration = $3,000-4,000
-- Authentication system = $2,000-3,000
+## 📄 License
 
-#### 3. Infrastructure & Security: $6,500-9,000
-- AWS setup = $2,000-3,000
-- Security implementation = $3,000-4,000
-- Performance optimization = $1,500-2,000
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-#### 4. Additional Costs: $14,300-19,680
-- Project management (15%) = $6,150-8,340
-- Testing & QA (10%) = $4,100-5,560
-- Documentation (5%) = $2,050-2,780
-- Deployment & DevOps = $2,000-3,000
+## 👥 Support
 
-**Total Project Cost:** $55,300-75,280  
-**Recommended Quote:** $65,000
+For support, email support@visualscoring.com or join our Slack channel.
 
-### 7. Maintenance & Support
+## 🙏 Acknowledgments
 
-#### Monthly Maintenance Package Options:
+- FastAPI for the backend framework
+- React for the frontend framework
+- AWS for cloud services
+- Material-UI for UI components
 
-##### 1. Basic: $1,000/month
-- Bug fixes
-- Security updates
-- Basic support
 
-##### 2. Standard: $2,000/month
-- Everything in Basic
-- Performance monitoring
-- Technical support
-- Minor feature updates
+This README.md now provides:
+- Detailed feature descriptions
+- Complete project structure
+- Clear setup instructions
+- API documentation
+- Security features
+- Deployment instructions
+- Monitoring & maintenance details
+- Contributing guidelines
+- License information
+- Support channels
+- Acknowledgments
 
-##### 3. Premium: $3,000/month
-- Everything in Standard
-- 24/7 support
-- Priority bug fixes
-- Feature development
-- Regular optimization
 
-### 8. Success Metrics
-- User adoption rate
-- Report generation time
-- System uptime
-- User satisfaction
-- Security incidents
-- Performance metrics
-
-### 9. Risks & Mitigation
-
-#### Risks:
-- Data security breaches
-- Performance issues
-- User adoption
-- Technical complexity
-- Timeline delays
-
-#### Mitigation:
-- Regular security audits
-- Performance monitoring
-- User training
-- Technical documentation
-- Agile methodology
-
-### 10. Future Enhancements
-- Mobile application
-- AI-powered insights
-- Advanced analytics
-- Integration capabilities
-- Customization options
-
-### 11. Acceptance Criteria
-- All features functioning as specified
-- Performance requirements met
-- Security requirements satisfied
-- Documentation completed
-- User training provided
-- Successful deployment
-- No critical bugs 
