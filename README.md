@@ -92,7 +92,7 @@ project/
 
 1. **Clone the Repository**
 ```bash
-git clone https://github.com/yourusername/visual-scoring-dashboard.git
+git clone https://github.com/Ayocrypt/visual-scoring-dashboard.git
 cd visual-scoring-dashboard
 ```
 
