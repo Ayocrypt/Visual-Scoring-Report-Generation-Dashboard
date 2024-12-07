@@ -83,7 +83,7 @@ project/
 ### Prerequisites
 
 - Python 3.9+
-- Node.js 16+
+- Node.js 16+ / React Typescript
 - PostgreSQL
 - AWS Account
 - Docker & Docker Compose (optional)
